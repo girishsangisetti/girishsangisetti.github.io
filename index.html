@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Girish Sangi Setti | Construction Management</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #1a2340; --blue: #2563eb; --blue-light: #3b82f6;
+      --white: #ffffff; --off-white: #f8fafc; --gray-100: #f1f5f9;
+      --gray-200: #e2e8f0; --gray-400: #94a3b8; --gray-600: #475569; --gray-800: #1e293b;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--gray-800); background: var(--white); line-height: 1.6; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: var(--navy); display: flex; justify-content: space-between; align-items: center; padding: 0 2.5rem; height: 60px; }
+    .nav-name { color: #fff; font-size: 1.05rem; font-weight: 600; text-decoration: none; }
+    .nav-links { display: flex; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.72); text-decoration: none; font-size: 0.82rem; font-weight: 500; padding: 0 1rem; height: 60px; display: flex; align-items: center; border-bottom: 2px solid transparent; transition: all 0.2s; }
+    .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.06); border-bottom-color: var(--blue-light); }
+
+    #top { background: var(--navy); color: #fff; padding: 120px 2.5rem 80px; text-align: center; }
+    .hero-eyebrow { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue-light); margin-bottom: 1rem; }
+    .hero-name { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700; color: #fff; margin-bottom: 0.9rem; }
+    .hero-tagline { font-size: 1rem; color: rgba(255,255,255,0.6); max-width: 580px; margin: 0 auto 2.2rem; font-weight: 300; line-height: 1.7; }
+    .hero-meta { display: flex; justify-content: center; gap: 1.8rem; flex-wrap: wrap; margin-bottom: 2.2rem; }
+    .hero-meta-item { font-size: 0.82rem; color: rgba(255,255,255,0.65); }
+    .hero-meta-item a { color: inherit; }
+    .hero-btns { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .btn { display: inline-block; padding: 0.6rem 1.4rem; border-radius: 4px; font-size: 0.85rem; font-weight: 500; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none; font-family: inherit; }
+    .btn-blue { background: var(--blue); color: #fff; }
+    .btn-blue:hover { background: var(--blue-light); }
+    .btn-ghost { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.3); }
+    .btn-ghost:hover { background: rgba(255,255,255,0.08); }
+
+    #strengths { background: var(--gray-100); padding: 3.5rem 2.5rem; }
+    #strengths h2 { text-align: center; font-size: 1.25rem; font-weight: 700; color: var(--navy); margin-bottom: 1.8rem; }
+    .strengths-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 0.9rem; max-width: 920px; margin: 0 auto; }
+    .strength-item { background: #fff; border: 1px solid var(--gray-200); border-left: 3px solid var(--blue); padding: 0.9rem 1.1rem; font-size: 0.84rem; color: var(--gray-600); line-height: 1.5; }
+
+    .wrap { max-width: 960px; margin: 0 auto; padding: 5rem 2.5rem; }
+    .alt-bg { background: var(--off-white); }
+    .sec-title { font-size: 1.45rem; font-weight: 700; color: var(--navy); display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.35rem; }
+    .sec-title::after { content: ''; flex: 1; height: 2px; background: var(--blue); border-radius: 1px; }
+    .sec-sub { font-size: 0.85rem; color: var(--gray-400); margin-bottom: 2rem; }
+
+    .about-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 3rem; align-items: start; }
+    .about-text p { font-size: 0.93rem; color: var(--gray-600); line-height: 1.78; margin-bottom: 1rem; }
+    .about-text p strong { color: var(--navy); }
+    .info-card { background: var(--gray-100); border: 1px solid var(--gray-200); border-radius: 6px; padding: 1.4rem; }
+    .info-card-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 1rem; }
+    .info-row { padding: 0.6rem 0; border-bottom: 1px solid var(--gray-200); }
+    .info-row:last-child { border-bottom: none; }
+    .info-row-label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-400); margin-bottom: 0.15rem; }
+    .info-row-val { font-size: 0.86rem; color: var(--gray-800); font-weight: 500; }
+
+    .exp-list { display: flex; flex-direction: column; gap: 1.4rem; }
+    .exp-card { background: #fff; border: 1px solid var(--gray-200); border-left: 4px solid var(--blue); border-radius: 4px; padding: 1.7rem 1.8rem; }
+    .exp-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.2rem; }
+    .exp-role { font-size: 1rem; font-weight: 700; color: var(--navy); }
+    .exp-badge { font-size: 0.72rem; font-weight: 600; color: var(--blue); background: #eff6ff; padding: 0.2rem 0.7rem; border-radius: 20px; white-space: nowrap; }
+    .exp-company { font-size: 0.86rem; font-weight: 600; color: var(--gray-600); margin-bottom: 1rem; }
+    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .exp-bullets li { font-size: 0.86rem; color: var(--gray-600); line-height: 1.65; padding-left: 1rem; position: relative; }
+    .exp-bullets li::before { content: '\25B8'; position: absolute; left: 0; color: var(--blue); font-size: 0.65rem; top: 4px; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+    .tag { font-size: 0.68rem; font-weight: 500; padding: 0.18rem 0.55rem; background: var(--gray-100); border: 1px solid var(--gray-200); border-radius: 3px; color: var(--gray-600); }
+
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.4rem; }
+    .proj-card { background: #fff; border: 1px solid var(--gray-200); border-radius: 6px; padding: 1.7rem; transition: box-shadow 0.2s, transform 0.2s; }
+    .proj-card:hover { box-shadow: 0 8px 24px rgba(37,99,235,0.1); transform: translateY(-3px); }
+    .proj-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.9rem; }
+    .proj-tag { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.18rem 0.5rem; background: #eff6ff; color: var(--blue); border-radius: 3px; }
+    .proj-title { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 0.25rem; line-height: 1.4; }
+    .proj-school { font-size: 0.72rem; color: var(--gray-400); margin-bottom: 0.8rem; }
+    .proj-desc { font-size: 0.84rem; color: var(--gray-600); line-height: 1.65; }
+
+    .skills-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .skill-group-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--blue); margin-bottom: 0.9rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--gray-200); }
+    .pills { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .pill { font-size: 0.76rem; font-weight: 500; padding: 0.3rem 0.8rem; border-radius: 20px; background: #fff; border: 1px solid var(--gray-200); color: var(--gray-600); transition: all 0.15s; cursor: default; }
+    .pill:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
+
+    .edu-list { display: flex; flex-direction: column; gap: 1.4rem; }
+    .edu-card { background: var(--gray-100); border: 1px solid var(--gray-200); border-radius: 6px; padding: 1.7rem 1.8rem; display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: start; }
+    .edu-degree { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 0.2rem; }
+    .edu-school { font-size: 0.88rem; color: var(--blue); font-weight: 600; margin-bottom: 0.2rem; }
+    .edu-loc { font-size: 0.78rem; color: var(--gray-400); margin-bottom: 1rem; }
+    .edu-gpa { font-size: 0.78rem; font-weight: 700; color: #fff; background: var(--navy); padding: 0.3rem 0.8rem; border-radius: 20px; white-space: nowrap; }
+    .courses-label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-400); margin-bottom: 0.5rem; }
+    .courses { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .course { font-size: 0.7rem; padding: 0.18rem 0.55rem; background: #fff; border: 1px solid var(--gray-200); border-radius: 3px; color: var(--gray-600); }
+
+    .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 1.1rem; }
+    .cert-card { background: #fff; border: 1px solid var(--gray-200); border-radius: 6px; padding: 1.4rem 1.1rem; text-align: center; transition: box-shadow 0.2s, border-color 0.2s; }
+    .cert-card:hover { box-shadow: 0 4px 16px rgba(37,99,235,0.1); border-color: var(--blue-light); }
+    .cert-icon { font-size: 1.7rem; margin-bottom: 0.65rem; }
+    .cert-name { font-size: 0.82rem; font-weight: 600; color: var(--navy); margin-bottom: 0.25rem; line-height: 1.35; }
+    .cert-org { font-size: 0.7rem; color: var(--gray-400); }
+    .cert-badge { display: inline-block; margin-top: 0.55rem; font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.12rem 0.5rem; border-radius: 10px; }
+    .cert-badge.active { background: #dcfce7; color: #16a34a; }
+    .cert-badge.pending { background: #fef3c7; color: #d97706; }
+
+    .contact-wrap { background: var(--navy); }
+    .contact-wrap .sec-title { color: #fff; }
+    .contact-wrap .sec-title::after { background: var(--blue-light); }
+    .contact-wrap .sec-sub { color: rgba(255,255,255,0.45); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .contact-intro { font-size: 0.92rem; color: rgba(255,255,255,0.62); line-height: 1.78; margin-bottom: 1.8rem; }
+    .contact-links { display: flex; flex-direction: column; gap: 0.8rem; }
+    .contact-link { display: flex; align-items: center; gap: 1rem; text-decoration: none; color: rgba(255,255,255,0.78); padding: 0.8rem 1.1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 5px; font-size: 0.86rem; transition: all 0.2s; }
+    .contact-link:hover { background: rgba(255,255,255,0.06); border-color: var(--blue-light); color: #fff; }
+    .cl-label { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--blue-light); display: block; margin-bottom: 0.1rem; }
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.3rem; }
+    .form-group label { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: rgba(255,255,255,0.45); }
+    .form-group input, .form-group textarea { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); border-radius: 4px; padding: 0.6rem 0.85rem; color: #fff; font-family: inherit; font-size: 0.86rem; outline: none; resize: vertical; transition: border-color 0.2s; }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.22); }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--blue-light); }
+    .form-note { font-size: 0.7rem; color: rgba(255,255,255,0.3); }
+
+    footer { background: #0f172a; padding: 1.4rem 2.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
+    .footer-name { font-size: 0.85rem; font-weight: 600; color: #fff; }
+    .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.3); }
+    .footer-top { font-size: 0.72rem; color: var(--blue-light); text-decoration: none; }
+    .footer-top:hover { text-decoration: underline; }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 1.2rem; }
+      .nav-links { display: none; }
+      #top { padding: 90px 1.5rem 60px; }
+      .wrap { padding: 3.5rem 1.5rem; }
+      .about-grid, .contact-grid, .skills-cols { grid-template-columns: 1fr; gap: 2rem; }
+      .edu-card { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { justify-content: center; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#top" class="nav-name">Girish Sangi Setti</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="top">
+  <p class="hero-eyebrow">Construction &amp; Project Management</p>
+  <h1 class="hero-name">Girish Sangi Setti</h1>
+  <p class="hero-tagline">
+    Project Coordination &nbsp;&middot;&nbsp; Estimating &nbsp;&middot;&nbsp; BIM &nbsp;&middot;&nbsp; CPM Scheduling &nbsp;&middot;&nbsp; Subcontractor Management<br>
+    M.S. Construction Management &nbsp;&middot;&nbsp; B.Arch &nbsp;&middot;&nbsp; OSHA-30 &nbsp;&middot;&nbsp; Procore Certified
+  </p>
+  <div class="hero-meta">
+    <span class="hero-meta-item">&#128205; Dallas&ndash;Fort Worth, TX</span>
+    <span class="hero-meta-item">&#9993; sangisetti19@gmail.com</span>
+    <span class="hero-meta-item">&#128222; +1 (940) 843-9492</span>
+    <span class="hero-meta-item">&#128188; <a href="https://www.linkedin.com/in/girish-sangi-setti" target="_blank">LinkedIn</a></span>
+  </div>
+  <div class="hero-btns">
+    <a href="#experience" class="btn btn-blue">View Experience</a>
+    <a href="#projects" class="btn btn-ghost">View Projects</a>
+  </div>
+</section>
+
+<div id="strengths">
+  <h2>Core Strengths</h2>
+  <div class="strengths-grid">
+    <div class="strength-item">Field coordination &amp; site inspections across all construction phases</div>
+    <div class="strength-item">QA/QC, safety compliance &amp; OSHA-30 certified</div>
+    <div class="strength-item">CPM scheduling, cost control &amp; value engineering</div>
+    <div class="strength-item">RFI &amp; submittal management &mdash; 250+ processed</div>
+    <div class="strength-item">BIM coordination &amp; clash detection (Navisworks)</div>
+    <div class="strength-item">Subcontractor management &mdash; 40+ trades coordinated</div>
+    <div class="strength-item">Quantity takeoffs &amp; trade-wise cost estimating</div>
+    <div class="strength-item">Architecture background &mdash; bridges design &amp; field</div>
+  </div>
+</div>
+
+<div id="about">
+  <div class="wrap">
+    <h2 class="sec-title">About</h2>
+    <p class="sec-sub">Construction management professional with an architecture foundation</p>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a construction management professional with <strong>4+ years of progressive experience</strong> spanning preconstruction, field coordination, and project closeout across commercial and residential buildings totaling <strong>$10M in value and 220,000 SF</strong>.</p>
+        <p>What sets me apart is my dual background &mdash; a <strong>Master of Science in Construction Management</strong> from the University of North Texas paired with a <strong>Bachelor of Architecture</strong>. I understand projects from both sides of the drawing: design intent and field reality.</p>
+        <p>I've managed 40+ subcontractors, processed 250+ RFIs and submittals, and resolved 50+ design conflicts through disciplined BIM coordination. Long term, I'm building toward launching <strong>Evince Design Build</strong> &mdash; a design-build firm grounded in the belief that the best projects come from professionals who speak both architecture and construction fluently.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">// Quick Info</div>
+        <div class="info-row"><div class="info-row-label">Location</div><div class="info-row-val">Dallas&ndash;Fort Worth, TX</div></div>
+        <div class="info-row"><div class="info-row-label">Graduate Degree</div><div class="info-row-val">M.S. Construction Management &middot; UNT</div></div>
+        <div class="info-row"><div class="info-row-label">Undergrad</div><div class="info-row-val">B.Arch &middot; JNAFAU, India</div></div>
+        <div class="info-row"><div class="info-row-label">Certifications</div><div class="info-row-val">OSHA-30 &middot; Procore Certified PM</div></div>
+        <div class="info-row"><div class="info-row-label">Authorization</div><div class="info-row-val">Eligible to Work in the U.S.</div></div>
+        <div class="info-row"><div class="info-row-label">Email</div><div class="info-row-val">sangisetti19@gmail.com</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="experience" class="alt-bg">
+  <div class="wrap">
+    <h2 class="sec-title">Experience</h2>
+    <p class="sec-sub">Roles across commercial construction coordination and project management</p>
+    <div class="exp-list">
+
+      <div class="exp-card">
+        <div class="exp-top"><div class="exp-role">Project Coordinator</div><div class="exp-badge">Mar 2023 &ndash; Jun 2023</div></div>
+        <div class="exp-company">Code Architects &nbsp;&middot;&nbsp; India</div>
+        <ul class="exp-bullets">
+          <li>Coordinated $1.6M commercial and residential projects (35,000 SF), managing 20 field personnel and 3 trade contractors to meet schedule milestones.</li>
+          <li>Processed 40+ submittals and RFIs using Excel, Revit, and AutoCAD, streamlining approval cycles across structural and MEP teams.</li>
+          <li>Managed field change orders, procurement, site inspections, and resource tracking across HVAC, electrical, plumbing, and architectural scopes.</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">Revit</span><span class="tag">AutoCAD</span><span class="tag">RFI Management</span><span class="tag">MEP Coordination</span><span class="tag">Site Inspections</span>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-top"><div class="exp-role">Construction Assistant Project Manager</div><div class="exp-badge">Aug 2021 &ndash; Feb 2023</div></div>
+        <div class="exp-company">Ira Creative Design Studio &nbsp;&middot;&nbsp; India</div>
+        <ul class="exp-bullets">
+          <li>Led 40 subcontractors across preconstruction, structural, facade, interior, MEP, and site development scopes on 25 projects &mdash; $8.2M, 220,000 SF.</li>
+          <li>Assisted in budget tracking, change order management, quantity takeoffs, trade-wise cost estimates, vendor bids, and value engineering plans.</li>
+          <li>Coordinated 250+ RFIs and submittals with architects and engineers; resolved 50+ design conflicts through BIM coordination and QA/QC oversight.</li>
+          <li>Conducted daily site monitoring including inspections, subcontractor scheduling, material verification, and permitting assistance.</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">Procore</span><span class="tag">Navisworks</span><span class="tag">Bluebeam</span><span class="tag">QA/QC</span><span class="tag">Cost Control</span><span class="tag">Subcontractor Mgmt</span><span class="tag">Value Engineering</span>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-top"><div class="exp-role">Construction Site Coordinator / Architect</div><div class="exp-badge">Oct 2020 &ndash; Jul 2021</div></div>
+        <div class="exp-company">Ira Creative Design Studio &nbsp;&middot;&nbsp; India &nbsp;&middot;&nbsp; Internship</div>
+        <ul class="exp-bullets">
+          <li>Assisted residential construction across all phases &mdash; foundations, structural framing, MEP, and finishes &mdash; ensuring quality, safety, and documentation compliance.</li>
+          <li>Conducted daily field inspections, documented field issues, attended coordination meetings, and supported as-built and closeout documentation.</li>
+          <li>Performed material quantity checks and trade inspections to verify work against drawings and project milestones.</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">Field Inspections</span><span class="tag">As-Built Docs</span><span class="tag">Safety Compliance</span><span class="tag">Architecture</span><span class="tag">Closeout</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div id="projects">
+  <div class="wrap">
+    <h2 class="sec-title">Academic Projects</h2>
+    <p class="sec-sub">Project work highlighting scheduling, BIM, and construction management skills</p>
+    <div class="projects-grid">
+      <div class="proj-card">
+        <div class="proj-tags"><span class="proj-tag">Primavera P6</span><span class="proj-tag">CPM</span><span class="proj-tag">Risk Analysis</span></div>
+        <div class="proj-title">Heavy Civil Infrastructure Scheduling</div>
+        <div class="proj-school">University of North Texas &nbsp;&middot;&nbsp; Fall 2023</div>
+        <p class="proj-desc">Full CPM scheduling and risk analysis of a highway interchange project in Primavera P6. Developed WBS, PERT three-point estimates, network diagrams, and critical path identification across 7 construction phases.</p>
+      </div>
+      <div class="proj-card">
+        <div class="proj-tags"><span class="proj-tag">Capstone</span><span class="proj-tag">Cost Control</span><span class="proj-tag">Risk Matrix</span></div>
+        <div class="proj-title">Disaster Resilient Community Center</div>
+        <div class="proj-school">University of North Texas &nbsp;&middot;&nbsp; Spring 2024</div>
+        <p class="proj-desc">Full project management simulation for a $20M community center &mdash; complete WBS, 599-day schedule, risk matrix, and cost control framework from preconstruction through closeout.</p>
+      </div>
+      <div class="proj-card">
+        <div class="proj-tags"><span class="proj-tag">Navisworks</span><span class="proj-tag">BIM</span><span class="proj-tag">Clash Detection</span></div>
+        <div class="proj-title">BIM Coordination &amp; Clash Detection</div>
+        <div class="proj-school">University of North Texas &nbsp;&middot;&nbsp; Fall 2024</div>
+        <p class="proj-desc">Federated BIM coordination of a 50,000 SF office project in Navisworks. Multi-discipline clash detection, RFI tracking, and resolution documentation across architectural, structural, and MEP models.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="skills" class="alt-bg">
+  <div class="wrap">
+    <h2 class="sec-title">Skills</h2>
+    <p class="sec-sub">Construction project delivery, coordination, and technical tools</p>
+    <div class="skills-cols">
+      <div>
+        <div class="skill-group-label">Software &amp; Technology</div>
+        <div class="pills">
+          <span class="pill">Procore</span><span class="pill">Primavera P6</span><span class="pill">Navisworks</span><span class="pill">Bluebeam</span><span class="pill">Autodesk Revit</span><span class="pill">AutoCAD</span><span class="pill">MS Project</span><span class="pill">Vectorworks</span><span class="pill">SolidWorks</span><span class="pill">MS Office Suite</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-label">Construction Expertise</div>
+        <div class="pills">
+          <span class="pill">Value Engineering</span><span class="pill">CPM Scheduling</span><span class="pill">Cost Control</span><span class="pill">QA/QC</span><span class="pill">RFI &amp; Submittal Mgmt</span><span class="pill">Change Order Processing</span><span class="pill">Quantity Takeoffs</span><span class="pill">Subcontractor Mgmt</span><span class="pill">Safety Compliance</span><span class="pill">Lean Construction</span><span class="pill">BIM Coordination</span><span class="pill">Clash Detection</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="education">
+  <div class="wrap">
+    <h2 class="sec-title">Education</h2>
+    <p class="sec-sub">Academic foundation in construction management and architecture</p>
+    <div class="edu-list">
+      <div class="edu-card">
+        <div>
+          <div class="edu-degree">Master of Science in Construction Management</div>
+          <div class="edu-school">University of North Texas</div>
+          <div class="edu-loc">Denton, TX &nbsp;&middot;&nbsp; Aug 2023 &ndash; May 2025</div>
+          <div class="courses-label">Relevant Coursework</div>
+          <div class="courses">
+            <span class="course">Advanced Scheduling</span><span class="course">Estimating &amp; Cost Control</span><span class="course">Project Risk Management</span><span class="course">BIM</span><span class="course">Quality Management</span><span class="course">Project Supervision</span><span class="course">Heavy Civil Construction</span>
+          </div>
+        </div>
+        <div class="edu-gpa">GPA 3.3 / 4.0</div>
+      </div>
+      <div class="edu-card">
+        <div>
+          <div class="edu-degree">Bachelor of Architecture (B.Arch)</div>
+          <div class="edu-school">JNAFAU</div>
+          <div class="edu-loc">India &nbsp;&middot;&nbsp; Jun 2016 &ndash; Jul 2021</div>
+          <div class="courses-label">Relevant Coursework</div>
+          <div class="courses">
+            <span class="course">Building Construction &amp; Materials</span><span class="course">Structural Systems</span><span class="course">Cost Estimating</span><span class="course">Site Planning &amp; Execution</span><span class="course">MEP Systems</span><span class="course">Construction Project Management</span>
+          </div>
+        </div>
+        <div class="edu-gpa">GPA 3.0 / 4.0</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="certifications" class="alt-bg">
+  <div class="wrap">
+    <h2 class="sec-title">Certifications</h2>
+    <p class="sec-sub">Safety, training, and construction operations credentials</p>
+    <div class="certs-grid">
+      <div class="cert-card"><div class="cert-icon">&#129494;</div><div class="cert-name">OSHA 30-Hour Construction Safety</div><div class="cert-org">OSHA</div><span class="cert-badge active">Active</span></div>
+      <div class="cert-card"><div class="cert-icon">&#128203;</div><div class="cert-name">Procore Certified Project Manager</div><div class="cert-org">Procore Technologies</div><span class="cert-badge active">Active</span></div>
+      <div class="cert-card"><div class="cert-icon">&#127959;</div><div class="cert-name">Procore Certified Preconstruction</div><div class="cert-org">Procore Technologies</div><span class="cert-badge active">Active</span></div>
+      <div class="cert-card"><div class="cert-icon">&#128208;</div><div class="cert-name">FE Civil Exam</div><div class="cert-org">NCEES</div><span class="cert-badge pending">In Progress</span></div>
+      <div class="cert-card"><div class="cert-icon">&#129522;</div><div class="cert-name">ACI Concrete Field Testing</div><div class="cert-org">ACI</div><span class="cert-badge pending">In Progress</span></div>
+      <div class="cert-card"><div class="cert-icon">&#128663;</div><div class="cert-name">Valid U.S. Driver's License</div><div class="cert-org">State of Texas</div><span class="cert-badge active">Active</span></div>
+    </div>
+  </div>
+</div>
+
+<div id="contact" class="contact-wrap">
+  <div class="wrap">
+    <h2 class="sec-title">Contact</h2>
+    <p class="sec-sub">Open to full-time opportunities across the U.S.</p>
+    <div class="contact-grid">
+      <div>
+        <p class="contact-intro">I'm actively seeking roles in project engineering, construction management, estimating, CPM scheduling, and BIM coordination. Based in Dallas&ndash;Fort Worth and open to relocation. Let's connect.</p>
+        <div class="contact-links">
+          <a href="mailto:sangisetti19@gmail.com" class="contact-link"><span>&#9993;</span><div><span class="cl-label">Email</span>sangisetti19@gmail.com</div></a>
+          <a href="tel:+19408439492" class="contact-link"><span>&#128222;</span><div><span class="cl-label">Phone</span>+1 (940) 843-9492</div></a>
+          <a href="https://www.linkedin.com/in/girish-sangi-setti" target="_blank" class="contact-link"><span>&#128188;</span><div><span class="cl-label">LinkedIn</span>linkedin.com/in/girish-sangi-setti</div></a>
+        </div>
+      </div>
+      <div>
+        <div class="contact-form">
+          <div class="form-row">
+            <div class="form-group"><label>Name</label><input type="text" id="fn" placeholder="Your name" /></div>
+            <div class="form-group"><label>Email</label><input type="email" id="fe" placeholder="your@email.com" /></div>
+          </div>
+          <div class="form-group"><label>Message</label><textarea id="fm" rows="5" placeholder="Tell me about the opportunity..."></textarea></div>
+          <p class="form-note">This opens your email app. A backend form can be connected later.</p>
+          <button class="btn btn-blue" style="width:fit-content;" onclick="window.location.href='mailto:sangisetti19@gmail.com?subject=Portfolio Inquiry from '+encodeURIComponent(document.getElementById('fn').value)+'&body='+encodeURIComponent(document.getElementById('fm').value+'\n\nFrom: '+document.getElementById('fn').value+' ('+document.getElementById('fe').value+')')">Send Message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-name">Girish Sangi Setti</div>
+  <div class="footer-copy">&copy; 2025 &middot; Dallas&ndash;Fort Worth, TX</div>
+  <a href="#top" class="footer-top">Back to top &uarr;</a>
+</footer>
+
+<script>
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = 'top';
+    document.querySelectorAll('[id]').forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 80) current = sec.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = '';
+      a.style.borderBottomColor = 'transparent';
+      if (a.getAttribute('href') === '#' + current) {
+        a.style.color = '#fff';
+        a.style.borderBottomColor = '#3b82f6';
+      }
+    });
+  });
+</script>
+</body>
+</html>
